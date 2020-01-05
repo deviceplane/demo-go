@@ -9,7 +9,7 @@ jobs:
           command: docker run --rm --privileged multiarch/qemu-user-static:register --reset
       - run:
           name: Build images
-          command: VERSION=$CIRCLE_SHA1; echo $VERSION #./scripts/build-containers.sh
+          command: VERSION=$CIRCLE_SHA1; ./scripts/build-containers.sh
       - run:
           name: Docker login
           command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
