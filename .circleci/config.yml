@@ -9,13 +9,13 @@ jobs:
           command: docker run --rm --privileged multiarch/qemu-user-static:register --reset
       - run:
           name: Build image
-          command: docker build -t deviceplane/demo-go:$CIRCLE_SHA1 .
+          command: VERSION=$CIRCLE_SHA1; ./scripts/build-containers.sh
       - run:
           name: Docker login
           command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Deploy image
-          command: docker push deviceplane/demo-go:$CIRCLE_SHA1
+          command: docker manifest push deviceplane/demo-go:$CIRCLE_SHA1
 
 workflows:
   version: 2
