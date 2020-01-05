@@ -9,7 +9,7 @@ FROM golang:1.13
 ARG version
 WORKDIR /app
 COPY ./ ./
-RUN GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags "-s -w -X main.version=$version" -o ./demo-go
+RUN GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -mod vendor -ldflags "-s -w -X main.version=$version" -o ./demo-go
 
 FROM ubuntu:18.04
 RUN apt-get update && apt-get install -y qemu-user-static
