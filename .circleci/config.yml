@@ -26,9 +26,6 @@ jobs:
           name: Build/push images
           command: export VERSION=$CIRCLE_SHA1; ./scripts/build-containers.sh
       - run:
-          name: Check docker version
-          command: docker version
-      - run:
           name: Push manifest
           command: docker manifest push deviceplane/demo-go:$CIRCLE_SHA1
 
