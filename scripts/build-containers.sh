@@ -14,3 +14,7 @@ docker push deviceplane/demo-go:arm64v8-${VERSION}
 docker manifest create deviceplane/demo-go:${VERSION} deviceplane/demo-go:amd64-${VERSION} deviceplane/demo-go:arm32v6-${VERSION} deviceplane/demo-go:arm64v8-${VERSION}
 docker manifest annotate deviceplane/demo-go:${VERSION} deviceplane/demo-go:arm32v6-${VERSION} --os linux --arch arm
 docker manifest annotate deviceplane/demo-go:${VERSION} deviceplane/demo-go:arm64v8-${VERSION} --os linux --arch arm64
+
+docker manifest create deviceplane/demo-go:latest deviceplane/demo-go:amd64-${VERSION} deviceplane/demo-go:arm32v6-${VERSION} deviceplane/demo-go:arm64v8-${VERSION}
+docker manifest annotate deviceplane/demo-go:latest deviceplane/demo-go:arm32v6-${VERSION} --os linux --arch arm
+docker manifest annotate deviceplane/demo-go:latest deviceplane/demo-go:arm64v8-${VERSION} --os linux --arch arm64
