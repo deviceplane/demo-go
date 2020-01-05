@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo $VERSION
+echo VERSION IS $VERSION
 
 docker build -t deviceplane/demo-go:amd64-${VERSION} -f dockerfiles/amd64/Dockerfile --build-arg version=${VERSION} .
 docker build -t deviceplane/demo-go:arm32v6-${VERSION} -f dockerfiles/arm32v6/Dockerfile --build-arg version=${VERSION} .
