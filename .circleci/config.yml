@@ -1,9 +1,21 @@
 version: 2
 jobs:
   build:
-    machine: true
+    machine: 
+      image: ubuntu-1604:201903-01
     steps:
       - checkout
+      - checkout
+      - run: 
+          name: Download up-to-date Docker
+          command: curl -fsSL https://get.docker.com/ -o docker-install.sh
+      - run: 
+          name: Install Docker
+          command: sh docker-install.sh
+      - run: 
+          name: Configure Docker to enable manifest support
+          command: |-
+            mkdir -p ~/.docker && echo '{"experimental":"enabled"}' > ~/.docker/config.json
       - run:
           name: Enable QEMU
           command: docker run --rm --privileged multiarch/qemu-user-static:register --reset
